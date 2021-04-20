@@ -14,6 +14,8 @@ export class HeroesComponent implements OnInit {
   selectedHero?: Hero;
 
   constructor(private heroService: HeroService, private messageService: MessageService) {
+    console.log('heroService', heroService);
+    console.log('messageService', messageService);
   }
 
   ngOnInit(): void {
@@ -29,11 +31,15 @@ export class HeroesComponent implements OnInit {
    */
   onSelect(hero: Hero): void {
     if (hero !== this.selectedHero) {
+      if (this.selectedHero) {
+        this.messageService.add(`HeroesComponent: Unselected ${this.selectedHero.name}`);
+      }
+
       this.selectedHero = hero;
-      this.messageService.add(`HeroesComponent: Selected ${hero}`);
+      this.messageService.add(`HeroesComponent: Selected ${hero.name}`);
     } else {
       this.selectedHero = undefined;
-      this.messageService.add(`HeroesComponent: Unselected ${hero}`);
+      this.messageService.add(`HeroesComponent: Unselected ${hero.name}`);
     }
   }
 }
