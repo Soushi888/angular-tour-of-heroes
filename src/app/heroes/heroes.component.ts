@@ -11,11 +11,8 @@ import {MessageService} from 'src/app/message.service';
 
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
-  selectedHero?: Hero;
 
-  constructor(private heroService: HeroService, private messageService: MessageService) {
-    console.log('heroService', heroService);
-    console.log('messageService', messageService);
+  constructor(private heroService: HeroService) {
   }
 
   ngOnInit(): void {
@@ -24,22 +21,5 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
-  }
-
-  /**
-   * Toggle description of an Hero
-   */
-  onSelect(hero: Hero): void {
-    if (hero !== this.selectedHero) {
-      if (this.selectedHero) {
-        this.messageService.add(`HeroesComponent: Unselected ${this.selectedHero.name}`);
-      }
-
-      this.selectedHero = hero;
-      this.messageService.add(`HeroesComponent: Selected ${hero.name}`);
-    } else {
-      this.selectedHero = undefined;
-      this.messageService.add(`HeroesComponent: Unselected ${hero.name}`);
-    }
   }
 }
