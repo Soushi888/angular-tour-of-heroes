@@ -3,7 +3,6 @@ import {Hero} from 'src/app/Hero';
 import {ActivatedRoute} from '@angular/router';
 import {HeroService} from 'src/app/hero.service';
 import {Location} from '@angular/common';
-import {timeSinceInMicros} from '@angular/compiler-cli/src/ngtsc/perf/src/clock';
 
 @Component({
   selector: 'app-hero-detail',
