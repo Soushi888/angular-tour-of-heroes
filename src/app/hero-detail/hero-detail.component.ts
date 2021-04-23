@@ -36,4 +36,7 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
+  delete(hero: Hero): void {
+    this.heroService.deleteHero(hero.id).subscribe(() => this.goBack());
+  }
 }
